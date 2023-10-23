@@ -1,0 +1,79 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+button {
+  font-family: inherit;
+}
+
+#app {
+  max-width: 1024px;
+  min-height: 100vh;
+  margin: 0 auto;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .app__clickBtn {
+    @keyframes gradient-animation {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+
+    border: none;
+    color: white;
+    transition: all 0.2s;
+    height: 50px;
+    width: 150px;
+    background: linear-gradient(90deg, #fc466b, #3f5efb);
+    font-size: 1.8rem;
+    border-radius: 5px;
+    font-weight: 500;
+    box-shadow: 0 0 5px grey;
+    background-size: 200% 200%;
+    animation: gradient-animation 3s linear infinite;
+
+    &.card__btn__danger {
+      background-color: red;
+    }
+
+    &:disabled {
+      text-decoration: line-through;
+      background-color: grey;
+    }
+
+    @media (min-width: 768px) {
+      &:hover {
+        scale: 1.2;
+      }
+    }
+
+    &:active {
+      transition-duration: 0.1s;
+      scale: 1;
+    }
+  }
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: lightgray;
+  align-items: center;
+  border-radius: 0 4px 4px 0; /* Create a sharp edge on the right */
+}
+
+.progress {
+  background-color: green;
+  transition: width 0.2s;
+  color: white;
+}
