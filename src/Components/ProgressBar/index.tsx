@@ -51,10 +51,9 @@ const ProgressBar = () => {
           style={{
             width: `${barProgress <= 100 ? barProgress : 100}%`,
           }}
-        >
-          <span style={{ marginRight: "10px" }}>{`${barProgress}`}</span>
-        </div>
+        ></div>
       </div>
+      <p class="progressContainer__progressValue">{barProgress}</p>
       {status === "timebar" && <Timebar />}
     </div>
   );
