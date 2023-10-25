@@ -1,32 +1,11 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import useStore from "./store";
+import useStore from "../../store";
+import "./styles.scss";
 
 const Timebar = () => {
-  const [progress, setProgress] = useState(100);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => prev - 1);
-    }, 20);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div
-      style={{
-        width: "200px",
-        marginTop: "10px",
-      }}
-    >
-      <div
-        style={{
-          height: "10px",
-          backgroundColor: "grey",
-          width: `${progress}%`,
-          transition: "width 0.1s",
-        }}
-      ></div>
+    <div class="progressContainer__timebar">
+      <div class="progressContainer__timebar__progress"></div>
     </div>
   );
 };
@@ -65,19 +44,12 @@ const ProgressBar = () => {
   }, [barProgress]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <div className="progress-bar" style={{ width: "600px" }}>
+    <div class="progressContainer">
+      <div className="progressContainer__progressBar">
         <div
-          className="progress"
+          className="progressContainer__progressBar__progress"
           style={{
             width: `${barProgress <= 100 ? barProgress : 100}%`,
-            textAlign: "right",
           }}
         >
           <span style={{ marginRight: "10px" }}>{`${barProgress}`}</span>
