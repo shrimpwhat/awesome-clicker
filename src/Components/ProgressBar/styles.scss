@@ -1,35 +1,46 @@
+$timebar_height: 10px;
+
 .progressContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
+  margin: 100px auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: max-content;
+  height: 200px;
+  padding: 50px;
 
   &__progressBar {
-    width: 350px;
-    height: 60px;
-    background-color: lightgray;
+    width: 300px;
+    height: 40px;
+    background: linear-gradient(
+      to right,
+      rgb(255, 237, 172) 5%,
+      rgb(255, 113, 12) 80%,
+      red 100%
+    );
     align-items: center;
+    border: 1px solid black;
 
     &__progress {
+      float: right;
       height: 100%;
-      text-align: right;
-      background-color: green;
+      background-color: rgb(239, 239, 239);
       transition: width 0.05s;
-      color: white;
     }
   }
 
   &__progressValue {
-    margin: 0;
+    margin: 10px 0 0 0;
     font-size: 1.3rem;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   &__timebar {
-    width: 200px;
+    width: 150px;
     margin-top: 10px;
-    height: 10px;
+    height: $timebar_height;
 
     @keyframes timebar-shrink {
       from {
@@ -40,12 +51,21 @@
       }
     }
 
+    @mixin timebar-color($theme) {
+      @if $theme == "light" {
+        background-color: grey;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        border: 1px solid black;
+      }
+    }
+
     &__progress {
       height: 100%;
-      background-color: grey;
       width: 100%;
       transition: width 0.1s;
       animation: timebar-shrink 2s linear;
+      border-radius: 5px;
+      @include timebar-color("light");
     }
   }
 }

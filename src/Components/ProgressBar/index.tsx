@@ -45,11 +45,12 @@ const ProgressBar = () => {
 
   return (
     <div class="progressContainer">
-      <div className="progressContainer__progressBar">
+      <h2 class="progressContainer__title">Current combo</h2>
+      <div class="progressContainer__progressBar">
         <div
-          className="progressContainer__progressBar__progress"
+          class="progressContainer__progressBar__progress"
           style={{
-            width: `${barProgress <= 100 ? barProgress : 100}%`,
+            width: `${barProgress <= 100 ? 100 - barProgress : 0}%`,
           }}
         ></div>
       </div>
