@@ -1,46 +1,45 @@
-$timebar_height: 10px;
-
 .progressContainer {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  margin: 100px auto;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: max-content;
-  height: 200px;
-  padding: 50px;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 15px;
 
-  &__progressBar {
-    width: 300px;
-    height: 40px;
-    background: linear-gradient(
-      to right,
-      rgb(255, 237, 172) 5%,
-      rgb(255, 113, 12) 80%,
-      red 100%
-    );
+  .progressBarGroup {
+    display: flex;
+    gap: 15px;
     align-items: center;
-    border: 1px solid black;
+    margin-left: 50px;
+    animation: shake 0.2s ease-in infinite;
 
-    &__progress {
+    &__progressBar {
+      width: 300px;
+      height: 40px;
+      background: linear-gradient(to right, #f5af19, #f12711);
+      align-items: center;
+      border: 1px solid black;
+    }
+
+    &__progressLine {
       float: right;
       height: 100%;
-      background-color: rgb(239, 239, 239);
+      background-color: white;
       transition: width 0.05s;
     }
-  }
 
-  &__progressValue {
-    margin: 10px 0 0 0;
-    font-size: 1.3rem;
-    font-style: italic;
-    font-weight: 700;
+    &__progressValue {
+      margin: 0;
+      font-size: 1.3rem;
+      font-style: italic;
+      font-weight: 700;
+    }
   }
 
   &__timebar {
     width: 150px;
-    margin-top: 10px;
-    height: $timebar_height;
+    height: 10px;
+    margin-left: auto;
 
     @keyframes timebar-shrink {
       from {
@@ -51,7 +50,7 @@ $timebar_height: 10px;
       }
     }
 
-    @mixin timebar-color($theme) {
+    @mixin timebar-colors($theme) {
       @if $theme == "light" {
         background-color: grey;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
@@ -63,9 +62,9 @@ $timebar_height: 10px;
       height: 100%;
       width: 100%;
       transition: width 0.1s;
-      animation: timebar-shrink 2s linear;
+      animation: timebar-shrink 4s linear;
       border-radius: 5px;
-      @include timebar-color("light");
+      @include timebar-colors("light");
     }
   }
 }

@@ -23,16 +23,7 @@
     font-weight: 500;
     box-shadow: 0 0 5px grey;
     background-size: 200% 200%;
-    animation: gradient-animation 3s linear infinite;
-
-    &.card__btn__danger {
-      background-color: red;
-    }
-
-    &:disabled {
-      text-decoration: line-through;
-      background-color: grey;
-    }
+    animation: gradient-animation 3s ease-in-out infinite;
 
     @media (min-width: 768px) {
       &:hover {
@@ -43,6 +34,10 @@
     &:active {
       transition-duration: 0.1s;
       scale: 1;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 

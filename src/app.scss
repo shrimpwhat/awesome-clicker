@@ -1,7 +1,11 @@
-html,
 body {
   margin: 0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+#app {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #c9d6ff, #e2e2e2);
 }
 
 button {
@@ -11,10 +15,11 @@ button {
 .header {
   display: flex;
   align-items: center;
-  width: 100%;
+  padding: 10px 10px 10px 70px;
 
   &__title {
     margin: 0;
+    color: rgb(21, 32, 117);
   }
 
   &__star {
@@ -23,6 +28,36 @@ button {
   }
 }
 
+.app__headerDivider {
+  width: 95%;
+  border-top: 1px rgb(173, 173, 173) solid;
+}
+
 main {
+  margin: 20vh;
   text-align: center;
+  // animation: shake 0.2s linear infinite;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 15px 15px 15px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.216);
+  background-color: rgba(0, 0, 0, 0.078);
+}
+
+@keyframes shake {
+  0% {
+    transform: none;
+  }
+  50% {
+    transform: translate(5px, -5px);
+  }
+  100% {
+    transform: none;
+  }
 }

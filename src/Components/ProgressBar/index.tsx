@@ -23,7 +23,7 @@ const ProgressBar = () => {
     timebarTimeout.current = setTimeout(() => {
       setStatus("default");
       clearProgressBar();
-    }, 2000);
+    }, 4000);
   };
 
   useEffect(() => {
@@ -44,19 +44,22 @@ const ProgressBar = () => {
   }, [barProgress]);
 
   return (
-    <div class="progressContainer">
-      <h2 class="progressContainer__title">Current combo</h2>
-      <div class="progressContainer__progressBar">
-        <div
-          class="progressContainer__progressBar__progress"
-          style={{
-            width: `${barProgress <= 100 ? 100 - barProgress : 0}%`,
-          }}
-        ></div>
+    <>
+      <div class="progressContainer">
+        <div class="progressBarGroup">
+          <div class="progressBarGroup__progressBar">
+            <div
+              class="progressBarGroup__progressLine"
+              style={{
+                width: `${barProgress <= 100 ? 100 - barProgress : 0}%`,
+              }}
+            ></div>
+          </div>
+          <p class="progressBarGroup__progressValue">{barProgress}</p>
+        </div>
+        {status === "timebar" && <Timebar />}
       </div>
-      <p class="progressContainer__progressValue">{barProgress}</p>
-      {status === "timebar" && <Timebar />}
-    </div>
+    </>
   );
 };
 

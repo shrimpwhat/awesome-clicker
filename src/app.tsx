@@ -11,11 +11,13 @@ export const App = () => {
         <h1 class="header__title">Awesome clicker!</h1>
         <img src={StarIcon} class="header__star" />
       </header>
+      {/* <hr class="app__headerDivider" /> */}
       <main>
         <Clicker />
-        <ProgressBar />
       </main>
-      <footer></footer>
+      <footer class="footer">
+        <ProgressBar />
+      </footer>
     </>
   );
 };
