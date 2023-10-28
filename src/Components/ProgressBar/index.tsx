@@ -11,8 +11,7 @@ const Timebar = () => {
 };
 
 const ProgressBar = () => {
-  const barProgress = useStore((state) => state.barProgress);
-  const clearProgressBar = useStore((state) => state.clearProgressBar);
+  const { currentCombo, clearProgressBar, theme, setTheme } = useStore();
 
   const inactivityTimeout = useRef<number | undefined>(undefined);
   const timebarTimeout = useRef<number | undefined>(undefined);
@@ -23,11 +22,12 @@ const ProgressBar = () => {
     timebarTimeout.current = setTimeout(() => {
       setStatus("default");
       clearProgressBar();
+      setTheme(theme.last);
     }, 4000);
   };
 
   useEffect(() => {
-    if (barProgress > 0) {
+    if (currentCombo > 0) {
       if (status === "timebar") {
         setStatus("default");
         clearTimeout(timebarTimeout.current);
@@ -35,27 +35,31 @@ const ProgressBar = () => {
 
       clearTimeout(inactivityTimeout.current);
       inactivityTimeout.current = setTimeout(() => handleInactivity(), 500);
+
+      if (currentCombo >= 100) {
+        if (theme.current !== "fire") setTheme("fire");
+      }
     }
 
     return () => {
       clearTimeout(inactivityTimeout.current);
       clearTimeout(timebarTimeout.current);
     };
-  }, [barProgress]);
+  }, [currentCombo]);
 
   return (
     <>
       <div class="progressContainer">
-        <div class="progressBarGroup">
+        <div class="progressBarGroup" data-shaking={theme.current === "fire"}>
           <div class="progressBarGroup__progressBar">
             <div
               class="progressBarGroup__progressLine"
               style={{
-                width: `${barProgress <= 100 ? 100 - barProgress : 0}%`,
+                width: `${currentCombo <= 100 ? 100 - currentCombo : 0}%`,
               }}
             ></div>
           </div>
-          <p class="progressBarGroup__progressValue">{barProgress}</p>
+          <p class="progressBarGroup__progressValue">{currentCombo}</p>
         </div>
         {status === "timebar" && <Timebar />}
       </div>
