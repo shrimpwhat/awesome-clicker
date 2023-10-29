@@ -1,4 +1,4 @@
-# Awesome Clikcer
+# Awesome Clicker
 
 _This cool clicker is built using [preact](https://preactjs.com/) and [zustand](https://github.com/pmndrs/zustand)_
 

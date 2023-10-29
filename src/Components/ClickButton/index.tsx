@@ -2,8 +2,7 @@ import "./styles.scss";
 import useStore from "../../store";
 
 export const Clicker = () => {
-  const clicks = useStore((state) => state.clicks);
-  const handleClick = useStore((state) => state.handleClick);
+  const { clicks, handleClick, theme } = useStore();
 
   const getRandomColor = (): { color: string; backgroundColor: string } => {
     const red = Math.random() * 255;
@@ -23,7 +22,7 @@ export const Clicker = () => {
   };
 
   return (
-    <div class="clicker">
+    <div class="clicker" data-shaking={theme.current === "fire"}>
       <h1 class="clicker__totalClicks">
         Total clicks:{" "}
         <span style={getRandomColor()} class="clicker__clicksValue">

@@ -1,20 +1,23 @@
-.progressContainer {
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.216);
+  background-color: rgba(0, 0, 0, 0.078);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 15px;
-  flex-wrap: wrap;
-  margin-top: 15px;
 
   .progressBarGroup {
     display: flex;
     gap: 15px;
     align-items: center;
     margin-left: 50px;
-
-    &[data-shaking="true"] {
-      animation: shake 0.2s ease-in infinite;
-    }
 
     &__progressBar {
       width: 300px;
@@ -61,7 +64,7 @@
       }
     }
 
-    &__progress {
+    &ProgressLine {
       height: 100%;
       width: 100%;
       transition: width 0.1s;

@@ -1,0 +1,19 @@
+header {
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-left: 70px;
+    width: max-content;
+
+    &__title {
+      margin: 0;
+      color: rgb(21, 32, 117);
+    }
+
+    &__star {
+      height: 30px;
+      width: 30px;
+    }
+  }
+}

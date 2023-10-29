@@ -25,7 +25,7 @@ const getDefaultTheme = () => {
 
 const useStore = create<State & Actions>()((set) => ({
   clicks: 0,
-  currentCombo: 90,
+  currentCombo: 0,
   theme: {
     ...(() => {
       const defaultTheme = getDefaultTheme();

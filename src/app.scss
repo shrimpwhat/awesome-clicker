@@ -16,42 +16,9 @@ button {
   font-family: inherit;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  padding: 10px 10px 10px 70px;
-
-  &__title {
-    margin: 0;
-    color: rgb(21, 32, 117);
-  }
-
-  &__star {
-    height: 30px;
-    width: 30px;
-  }
-}
-
-.app__headerDivider {
-  width: 95%;
-  border-top: 1px rgb(173, 173, 173) solid;
-}
-
 main {
   margin: 20vh;
   text-align: center;
-  // animation: shake 0.2s linear infinite;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 0 15px 15px 15px;
-  box-sizing: border-box;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.216);
-  background-color: rgba(0, 0, 0, 0.078);
 }
 
 @keyframes shake {
@@ -64,4 +31,8 @@ main {
   100% {
     transform: none;
   }
+}
+
+*[data-shaking="true"] {
+  animation: shake 0.2s ease-in infinite;
 }
