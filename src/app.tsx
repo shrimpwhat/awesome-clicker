@@ -1,16 +1,20 @@
 import "./app.scss";
-import Clicker from "./Components/ClickButton";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
+import Clicker from "./Components/Main";
+import FooterContent from "./Components/Footer";
+import HeaderTitle from "./Components/Header";
 
 export const App = () => {
   return (
     <>
-      <Header />
+      <header class="header">
+        <HeaderTitle />
+      </header>
       <main>
         <Clicker />
       </main>
-      <Footer />
+      <footer class="footer">
+        <FooterContent />
+      </footer>
     </>
   );
 };

@@ -1,3 +1,5 @@
+$mount-animation-duration: 2s;
+
 .clicker {
   &__clickBtn {
     @keyframes gradient-animation {
@@ -15,15 +17,30 @@
     border: none;
     color: white;
     transition: all 0.2s;
-    height: 50px;
-    width: 150px;
+    height: 70px;
+    width: 200px;
     background: linear-gradient(90deg, #fc466b, #3f5efb);
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     border-radius: 5px;
     font-weight: 500;
     box-shadow: 0 0 5px grey;
     background-size: 200% 200%;
-    animation: gradient-animation 3s ease-in-out infinite;
+
+    @keyframes mount-animation {
+      from {
+        opacity: 0;
+        transform: scale(0.2);
+        margin-top: 10vh;
+      }
+      to {
+        opacity: 1;
+        transform: none;
+        margin-top: 0;
+      }
+    }
+
+    animation: both mount-animation $mount-animation-duration ease,
+      gradient-animation 3s ease-in-out infinite;
 
     @media (min-width: 768px) {
       &:hover {
@@ -43,6 +60,16 @@
 
   &__totalClicks {
     margin-bottom: 40px;
+    animation: both mount-animaton $mount-animation-duration 1s;
+
+    @keyframes mount-animaton {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
   }
 
   &__clicksValue {

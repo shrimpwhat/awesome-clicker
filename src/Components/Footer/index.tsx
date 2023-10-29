@@ -32,7 +32,7 @@ const ProgressBar = ({
   );
 };
 
-const Footer = () => {
+const FooterContent = () => {
   const { currentCombo, clearProgressBar, theme, setTheme } = useStore();
 
   const inactivityTimeout = useRef<number | undefined>(undefined);
@@ -69,14 +69,14 @@ const Footer = () => {
     };
   }, [currentCombo]);
   return (
-    <footer class="footer">
+    <>
       <ProgressBar
         currentCombo={currentCombo}
         shouldShake={theme.current === "fire"}
       />
       {status === "timebar" && <Timebar />}
-    </footer>
+    </>
   );
 };
 
-export default Footer;
+export default FooterContent;
