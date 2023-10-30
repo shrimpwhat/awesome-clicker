@@ -4,27 +4,28 @@ $mount-animation-duration: 2s;
   &__clickBtn {
     @keyframes gradient-animation {
       0% {
-        background-position: 0% 0%;
+        background-position: 0 0;
       }
       50% {
         background-position: 100% 100%;
       }
       100% {
-        background-position: 0% 0%;
+        background-position: 0 0;
       }
     }
 
     border: none;
     color: white;
     transition: all 0.2s;
-    height: 70px;
-    width: 200px;
     background: linear-gradient(90deg, #fc466b, #3f5efb);
-    font-size: 2.5rem;
     border-radius: 5px;
     font-weight: 500;
     box-shadow: 0 0 5px grey;
     background-size: 200% 200%;
+
+    height: 60px;
+    width: 120px;
+    font-size: 2rem;
 
     @keyframes mount-animation {
       from {
@@ -39,7 +40,7 @@ $mount-animation-duration: 2s;
       }
     }
 
-    animation: both mount-animation $mount-animation-duration ease,
+    animation: mount-animation $mount-animation-duration ease,
       gradient-animation 3s ease-in-out infinite;
 
     @media (min-width: 768px) {
@@ -50,7 +51,7 @@ $mount-animation-duration: 2s;
 
     &:active {
       transition-duration: 0.1s;
-      scale: 1;
+      scale: none;
     }
 
     &:focus {

@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 type Themes = "light" | "dark" | "fire";
 
@@ -23,36 +24,45 @@ const getDefaultTheme = () => {
     : "light";
 };
 
-const useStore = create<State & Actions>()((set) => ({
-  clicks: 0,
-  currentCombo: 0,
-  theme: {
-    ...(() => {
-      const defaultTheme = getDefaultTheme();
-      return {
-        current: defaultTheme,
-        last: defaultTheme,
-      };
-    })(),
-  },
+const useStore = create<State & Actions>()(
+  persist(
+    (set) => ({
+      clicks: 0,
+      currentCombo: 0,
+      theme: {
+        ...(() => {
+          const defaultTheme = getDefaultTheme();
+          return {
+            current: defaultTheme,
+            last: defaultTheme,
+          };
+        })(),
+      },
 
-  handleClick: () =>
-    set((state) => ({
-      clicks: state.clicks + 1,
-      currentCombo: state.currentCombo + 1,
-    })),
+      handleClick: () =>
+        set((state) => ({
+          clicks: state.clicks + 1,
+          currentCombo: state.currentCombo + 1,
+        })),
 
-  clearProgressBar: () => set({ currentCombo: 0 }),
+      clearProgressBar: () => set({ currentCombo: 0 }),
 
-  setTheme: (theme) =>
-    set(({ theme: { current, last } }) => {
-      return {
-        theme: {
-          current: theme as Themes,
-          last: current === "fire" ? last : current,
-        },
-      };
+      setTheme: (theme) =>
+        set(({ theme: { current, last } }) => {
+          return {
+            theme: {
+              current: theme as Themes,
+              last: current === "fire" ? last : current,
+            },
+          };
+        }),
     }),
-}));
+    {
+      name: "ac-storage",
+      storage: createJSONStorage(() => localStorage),
+      partialize: (state) => ({ clicks: state.clicks }),
+    }
+  )
+);
 
 export default useStore;

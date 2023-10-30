@@ -1,8 +1,11 @@
 import "./styles.scss";
 import useStore from "../../store";
+import { useEffect } from "preact/compat";
 
 export const Clicker = () => {
   const { clicks, handleClick, theme } = useStore();
+
+  useEffect(() => {}, []);
 
   const getRandomColor = (): { color: string; backgroundColor: string } => {
     const red = Math.random() * 255;
