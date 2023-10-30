@@ -21,7 +21,7 @@ const ProgressBar = ({
     <div class="progressBarGroup" data-shaking={shouldShake}>
       <div class="progressBarGroup__progressBar">
         <div
-          class="progressBarGroup__progressLine"
+          class="progressBarGroup__progressFlap"
           style={{
             width: `${currentCombo <= 100 ? 100 - currentCombo : 0}%`,
           }}
