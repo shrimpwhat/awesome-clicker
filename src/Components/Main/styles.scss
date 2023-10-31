@@ -17,10 +17,10 @@ $mount-animation-duration: 2s;
     border: none;
     color: white;
     transition: all 0.2s;
-    background: linear-gradient(90deg, #fc466b, #3f5efb);
+    background: var(--clickButton-gradient);
     border-radius: 5px;
     font-weight: 500;
-    box-shadow: 0 0 5px grey;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.63);
     background-size: 200% 200%;
 
     height: 60px;

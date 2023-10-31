@@ -1,13 +1,14 @@
 import "./app.scss";
 import Clicker from "./Components/Main";
 import FooterContent from "./Components/Footer";
-import HeaderTitle from "./Components/Header";
+import { HeaderTitle, ThemeToggler } from "./Components/Header";
 
 export const App = () => {
   return (
     <>
       <header class="header">
         <HeaderTitle />
+        <ThemeToggler />
       </header>
       <main>
         <Clicker />

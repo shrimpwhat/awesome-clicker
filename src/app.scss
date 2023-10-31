@@ -1,19 +1,35 @@
-:root {
-  --theme: "light";
-}
-
 body {
   margin: 0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  --app-background: linear-gradient(to bottom, #c9d6ff, #e2e2e2);
+  --app-fontColor: rgb(9, 17, 80);
+  --footer-background: rgba(0, 0, 0, 0.078);
+  --clickButton-gradient: linear-gradient(to right, #fc466b, #3f5efb);
+  --timebar-color: grey;
+  --themeToggleButton-color: white;
+  --themeToggleButton-hoverColor: rgb(213, 213, 213);
+
+  &.theme-dark {
+    --app-background: linear-gradient(to bottom, #000428, #004e92);
+    --app-fontColor: white;
+    --footer-background: rgba(0, 0, 0, 0.255);
+    --clickButton-gradient: linear-gradient(to right, #4776e6, #8e54e9);
+    --timebar-color: white;
+    --themeToggleButton-color: black;
+    --themeToggleButton-hoverColor: rgb(33, 33, 33);
+  }
 }
 
 #app {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #c9d6ff, #e2e2e2);
+  background: var(--app-background);
+  color: var(--app-fontColor);
 }
 
 button {
   font-family: inherit;
+  cursor: pointer;
 }
 
 main {

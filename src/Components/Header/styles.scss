@@ -1,4 +1,13 @@
+@use "sass:color";
+
 .header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  img {
+    width: 30px;
+  }
+
   .titleContainer {
     display: flex;
     align-items: center;
@@ -8,12 +17,23 @@
 
     &__title {
       margin: 0;
-      color: rgb(21, 32, 117);
     }
+  }
 
-    &__star {
-      height: 30px;
-      width: 30px;
+  &__themeToggleButton {
+    width: max-content;
+    justify-self: end;
+    margin: 20px 40px 0 0;
+    border: none;
+    background-color: var(--themeToggleButton-color);
+    padding-top: 5px;
+    border-radius: 10px;
+    transition: all 0.3s;
+
+    @media (min-width: 1024px) {
+      &:hover {
+        background-color: var(--themeToggleButton-hoverColor);
+      }
     }
   }
 }

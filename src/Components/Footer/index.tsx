@@ -44,7 +44,7 @@ const FooterContent = () => {
     timebarTimeout.current = setTimeout(() => {
       setStatus("default");
       clearProgressBar();
-      setTheme(theme.last);
+      if (theme.current === "fire") setTheme(theme.last);
     }, 4000);
   };
 

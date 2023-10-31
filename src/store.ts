@@ -18,6 +18,15 @@ type Actions = {
   setTheme: (theme: Themes | Omit<Themes, "fire">) => void;
 };
 
+type PersistedState =
+  | {
+      clicks: number;
+      theme: {
+        current: Themes;
+      };
+    }
+  | undefined;
+
 const getDefaultTheme = () => {
   return window.matchMedia?.("(prefers-color-scheme: dark)").matches
     ? "dark"
@@ -49,6 +58,8 @@ const useStore = create<State & Actions>()(
 
       setTheme: (theme) =>
         set(({ theme: { current, last } }) => {
+          document.body.classList.remove(`theme-${current}`);
+          document.body.classList.add(`theme-${theme}`);
           return {
             theme: {
               current: theme as Themes,
@@ -60,7 +71,18 @@ const useStore = create<State & Actions>()(
     {
       name: "ac-storage",
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ clicks: state.clicks }),
+      partialize: (state) => ({
+        clicks: state.clicks,
+        theme: { current: state.theme.current },
+      }),
+      merge: (persistedState, currentState) => {
+        const tempState = persistedState as PersistedState;
+        let currentTheme =
+          tempState?.theme.current ?? currentState.theme.current;
+        currentState.theme.current = currentTheme;
+        document.body.classList.add(`theme-${currentTheme}`);
+        return currentState;
+      },
     }
   )
 );

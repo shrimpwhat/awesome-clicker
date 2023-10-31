@@ -6,7 +6,7 @@
   padding: 15px;
   box-sizing: border-box;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.216);
-  background-color: rgba(0, 0, 0, 0.078);
+  background-color: var(--footer-background);
 
   display: flex;
   justify-content: space-between;
@@ -58,7 +58,7 @@
 
     @mixin timebar-colors($theme) {
       @if $theme == "light" {
-        background-color: grey;
+        background-color: var(--timebar-color);
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
         border: 1px solid black;
       }
