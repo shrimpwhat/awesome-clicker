@@ -80,6 +80,7 @@ const useStore = create<State & Actions>()(
         let currentTheme =
           tempState?.theme.current ?? currentState.theme.current;
         currentState.theme.current = currentTheme;
+        currentState.clicks = tempState?.clicks ?? currentState.clicks;
         document.body.classList.add(`theme-${currentTheme}`);
         return currentState;
       },

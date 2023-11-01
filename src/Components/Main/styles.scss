@@ -43,7 +43,7 @@ $mount-animation-duration: 2s;
     animation: mount-animation $mount-animation-duration ease,
       gradient-animation 3s ease-in-out infinite;
 
-    @media (min-width: 768px) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         scale: 1.2;
       }

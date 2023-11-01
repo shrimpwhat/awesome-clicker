@@ -34,7 +34,6 @@ const ProgressBar = ({
 
 const FooterContent = () => {
   const { currentCombo, clearProgressBar, theme, setTheme } = useStore();
-
   const inactivityTimeout = useRef<number | undefined>(undefined);
   const timebarTimeout = useRef<number | undefined>(undefined);
   const [status, setStatus] = useState<"default" | "timebar">("default");

@@ -1,5 +1,3 @@
-@use "sass:color";
-
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -30,10 +28,14 @@
     border-radius: 10px;
     transition: all 0.3s;
 
-    @media (min-width: 1024px) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         background-color: var(--themeToggleButton-hoverColor);
       }
+    }
+
+    body.theme-fire & {
+      display: none;
     }
   }
 }

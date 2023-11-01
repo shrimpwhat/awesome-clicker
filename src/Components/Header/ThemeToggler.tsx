@@ -1,9 +1,12 @@
 import useStore from "../../store";
 import SunIcon from "../../assets/sun.svg";
 import MoonIcon from "../../assets/moon.svg";
+import { useShallow } from "zustand/react/shallow";
 
 export default function ThemeToggler() {
-  const { theme, setTheme } = useStore();
+  const { theme, setTheme } = useStore(
+    useShallow((state) => ({ theme: state.theme, setTheme: state.setTheme }))
+  );
 
   const toggleTheme = () => {
     setTheme(theme.current === "light" ? "dark" : "light");

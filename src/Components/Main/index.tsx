@@ -1,11 +1,15 @@
 import "./styles.scss";
 import useStore from "../../store";
-import { useEffect } from "preact/compat";
+import { useShallow } from "zustand/react/shallow";
 
 export const Clicker = () => {
-  const { clicks, handleClick, theme } = useStore();
-
-  useEffect(() => {}, []);
+  const { clicks, handleClick, theme } = useStore(
+    useShallow((state) => ({
+      clicks: state.clicks,
+      handleClick: state.handleClick,
+      theme: state.theme,
+    }))
+  );
 
   const getRandomColor = (): { color: string; backgroundColor: string } => {
     const red = Math.random() * 255;
