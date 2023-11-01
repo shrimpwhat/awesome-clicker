@@ -6,6 +6,7 @@ body {
   --app-fontColor: rgb(9, 17, 80);
   --footer-background: rgba(0, 0, 0, 0.078);
   --clickButton-gradient: linear-gradient(to right, #fc466b, #3f5efb);
+  --clickButton-shadowColor: #a9b0c9;
   --timebar-color: grey;
   --themeToggleButton-color: white;
   --themeToggleButton-hoverColor: rgb(213, 213, 213);
@@ -19,9 +20,16 @@ body {
     --themeToggleButton-color: black;
     --themeToggleButton-hoverColor: rgb(33, 33, 33);
   }
+
+  @debug #{--timebar-color};
+
+  &.theme-fire {
+    --app-background: linear-gradient(166deg, #fbab7e 0%, #f7ce68 100%);
+  }
 }
 
 #app {
+  transition: background 2s;
   min-height: 100vh;
   background: var(--app-background);
   color: var(--app-fontColor);

@@ -18,14 +18,15 @@ $mount-animation-duration: 2s;
     color: white;
     transition: all 0.2s;
     background: var(--clickButton-gradient);
-    border-radius: 5px;
+    border-radius: 10px;
     font-weight: 500;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.63);
     background-size: 200% 200%;
-
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.364);
     height: 60px;
     width: 120px;
     font-size: 2rem;
+    position: relative;
+    overflow: hidden;
 
     @keyframes mount-animation {
       from {
@@ -46,12 +47,36 @@ $mount-animation-duration: 2s;
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         scale: 1.2;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.364),
+          0 0 30px rgba(0, 0, 0, 0.321);
+        letter-spacing: 0.5px;
+
+        &::before {
+          transition: all 1s;
+          left: 110%;
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.3)
+        );
+        width: 50%;
+        top: 0;
+        left: -100%;
+        filter: blur(5px);
+        transform: skewX(-20deg);
       }
     }
 
     &:active {
       transition-duration: 0.1s;
-      scale: none;
+      scale: 0.9;
     }
 
     &:focus {
