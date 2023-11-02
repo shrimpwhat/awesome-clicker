@@ -23,6 +23,7 @@ type PersistedState =
       clicks: number;
       theme: {
         current: Themes;
+        last: Omit<Themes, "fire">;
       };
     }
   | undefined;
@@ -73,12 +74,18 @@ const useStore = create<State & Actions>()(
       storage: createJSONStorage(() => localStorage),
       partialize: (state) => ({
         clicks: state.clicks,
-        theme: { current: state.theme.current },
+        theme: { current: state.theme.current, last: state.theme.last },
       }),
       merge: (persistedState, currentState) => {
         const tempState = persistedState as PersistedState;
-        let currentTheme =
-          tempState?.theme.current ?? currentState.theme.current;
+
+        let currentTheme = currentState.theme.current;
+        if (tempState)
+          currentTheme =
+            tempState.theme.current === "fire"
+              ? (tempState.theme.last as Themes)
+              : tempState.theme.current;
+
         currentState.theme.current = currentTheme;
         currentState.clicks = tempState?.clicks ?? currentState.clicks;
         document.body.classList.add(`theme-${currentTheme}`);
