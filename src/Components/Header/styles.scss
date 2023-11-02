@@ -13,6 +13,10 @@
     margin-left: 70px;
     width: max-content;
 
+    body.theme-fire & {
+      animation: var(--shake-animation);
+    }
+
     &__title {
       margin: 0;
     }

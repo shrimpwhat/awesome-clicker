@@ -10,15 +10,9 @@ const Timebar = () => {
   );
 };
 
-const ProgressBar = ({
-  currentCombo,
-  shouldShake,
-}: {
-  currentCombo: number;
-  shouldShake: boolean;
-}) => {
+const ProgressBar = ({ currentCombo }: { currentCombo: number }) => {
   return (
-    <div class="progressBarGroup" data-shaking={shouldShake}>
+    <div class="progressBarGroup">
       <div class="progressBarGroup__progressBar">
         <div
           class="progressBarGroup__progressFlap"
@@ -69,10 +63,7 @@ const FooterContent = () => {
   }, [currentCombo]);
   return (
     <>
-      <ProgressBar
-        currentCombo={currentCombo}
-        shouldShake={theme.current === "fire"}
-      />
+      <ProgressBar currentCombo={currentCombo} />
       {status === "timebar" && <Timebar />}
     </>
   );

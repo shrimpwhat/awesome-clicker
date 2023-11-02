@@ -29,7 +29,7 @@ export const Clicker = () => {
   };
 
   return (
-    <div class="clicker" data-shaking={theme.current === "fire"}>
+    <div class="clicker">
       <h1 class="clicker__totalClicks">
         Total clicks:{" "}
         <span style={getRandomColor()} class="clicker__clicksValue">

@@ -1,38 +1,61 @@
 body {
   margin: 0;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
-  --app-background: linear-gradient(to bottom, #c9d6ff, #e2e2e2);
+  --app-background: linear-gradient(135deg, #a8edea, #fed6e3);
   --app-fontColor: rgb(9, 17, 80);
-  --footer-background: rgba(0, 0, 0, 0.036);
-  --clickButton-gradient: linear-gradient(to right, #fc466b, #3f5efb);
+  --footer-background: rgba(0, 0, 0, 0.04);
+  --clickButton-gradient: linear-gradient(45deg, #fc466b, #3f5efb);
   --clickButton-shadowColor: #a9b0c9;
   --timebar-color: grey;
   --themeToggleButton-color: white;
   --themeToggleButton-hoverColor: rgb(213, 213, 213);
+  --shake-animation: shake 0.2s ease-in infinite;
 
   &.theme-dark {
-    --app-background: linear-gradient(to bottom, #000428, #004e92);
+    --app-background: linear-gradient(
+      135deg,
+      rgba(30, 2, 83, 1) 44.2%,
+      rgb(91, 0, 103)
+    );
     --app-fontColor: white;
     --footer-background: rgba(0, 0, 0, 0.255);
-    --clickButton-gradient: linear-gradient(to right, #4776e6, #8e54e9);
+    --clickButton-gradient: linear-gradient(45deg, #4776e6, #8e54e9);
     --timebar-color: white;
     --themeToggleButton-color: black;
     --themeToggleButton-hoverColor: rgb(33, 33, 33);
   }
 
-  @debug #{--timebar-color};
-
   &.theme-fire {
-    --app-background: linear-gradient(166deg, #fbab7e 0%, #f7ce68 100%);
+    --app-background: linear-gradient(
+      135deg,
+      rgb(255, 185, 33),
+      rgb(240, 141, 54)
+    );
+    --app-fontColor: black;
+    --clickButton-gradient: linear-gradient(45deg, #fc8072, rgb(255, 67, 67));
+    --timebar-color: black;
   }
 }
 
 #app {
-  transition: background 2s;
   min-height: 100vh;
-  background: var(--app-background);
   color: var(--app-fontColor);
+  background: white;
+  background-image: var(--app-background);
+  background-size: 400%;
+  animation: bg-animation 25s infinite;
+
+  @keyframes bg-animation {
+    from {
+      background-position: left;
+    }
+    50% {
+      background-position: right;
+    }
+    to {
+      background-position: left;
+    }
+  }
 }
 
 button {
@@ -55,8 +78,4 @@ main {
   100% {
     transform: none;
   }
-}
-
-*[data-shaking="true"] {
-  animation: shake 0.2s ease-in infinite;
 }

@@ -55,12 +55,15 @@ const useStore = create<State & Actions>()(
           currentCombo: state.currentCombo + 1,
         })),
 
-      clearProgressBar: () => set({ currentCombo: 0 }),
+      clearProgressBar: () => {
+        set({ currentCombo: 0 });
+      },
 
       setTheme: (theme) =>
         set(({ theme: { current, last } }) => {
           document.body.classList.remove(`theme-${current}`);
           document.body.classList.add(`theme-${theme}`);
+
           return {
             theme: {
               current: theme as Themes,
