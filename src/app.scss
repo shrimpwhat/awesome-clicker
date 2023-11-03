@@ -44,6 +44,7 @@ body {
   background-image: var(--app-background);
   background-size: 400%;
   animation: bg-animation 25s infinite;
+  position: relative;
 
   @keyframes bg-animation {
     from {
@@ -70,12 +71,54 @@ main {
 
 @keyframes shake {
   0% {
-    transform: none;
+    translate: none;
   }
   50% {
-    transform: translate(5px, -5px);
+    translate: 5px -5px;
   }
   100% {
-    transform: none;
+    translate: none;
+  }
+}
+
+.fireSpawner {
+  &__icon {
+    $animation-duration: 6s;
+
+    width: 80px;
+    animation: become-visible calc($animation-duration / 2) ease-in-out,
+      both slide-up $animation-duration linear,
+      side-moves 1s ease-in-out infinite;
+    left: 50vw;
+    position: absolute;
+    bottom: 0;
+
+    @keyframes become-visible {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slide-up {
+      to {
+        bottom: 100%;
+      }
+    }
+
+    @keyframes side-moves {
+      0% {
+        transform: translateX(10px);
+      }
+      50% {
+        transform: translateX(-10px);
+      }
+      100% {
+        transform: translateX(10px);
+      }
+    }
   }
 }

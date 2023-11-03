@@ -38,7 +38,7 @@ const useStore = create<State & Actions>()(
   persist(
     (set) => ({
       clicks: 0,
-      currentCombo: 0,
+      currentCombo: 90,
       theme: {
         ...(() => {
           const defaultTheme = getDefaultTheme();

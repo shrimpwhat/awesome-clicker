@@ -3,11 +3,10 @@ import useStore from "../../store";
 import { useShallow } from "zustand/react/shallow";
 
 export const Clicker = () => {
-  const { clicks, handleClick, theme } = useStore(
+  const { clicks, handleClick } = useStore(
     useShallow((state) => ({
       clicks: state.clicks,
       handleClick: state.handleClick,
-      theme: state.theme,
     }))
   );
 

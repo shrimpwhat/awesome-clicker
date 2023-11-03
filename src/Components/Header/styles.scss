@@ -2,10 +2,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  img {
-    width: 30px;
-  }
-
   .titleContainer {
     display: flex;
     align-items: center;
@@ -41,5 +37,9 @@
     body.theme-fire & {
       display: none;
     }
+  }
+
+  img {
+    width: 30px;
   }
 }
