@@ -34,11 +34,19 @@ const getDefaultTheme = () => {
     : "light";
 };
 
+const handleBodyTheme = (
+  last: Themes | Omit<Themes, "fire">,
+  current: Themes | Omit<Themes, "fire">
+) => {
+  document.body.classList.remove(`theme-${last}`);
+  document.body.classList.add(`theme-${current}`);
+};
+
 const useStore = create<State & Actions>()(
   persist(
     (set) => ({
       clicks: 0,
-      currentCombo: 90,
+      currentCombo: 0,
       theme: {
         ...(() => {
           const defaultTheme = getDefaultTheme();
@@ -56,14 +64,25 @@ const useStore = create<State & Actions>()(
         })),
 
       clearProgressBar: () => {
-        set({ currentCombo: 0 });
+        set((state) => {
+          const newState = {
+            currentCombo: 0,
+            theme: {
+              current:
+                state.currentCombo >= 100
+                  ? (state.theme.last as Themes)
+                  : state.theme.current,
+              last: state.theme.last,
+            },
+          };
+          handleBodyTheme("fire", newState.theme.current);
+          return newState;
+        });
       },
 
       setTheme: (theme) =>
         set(({ theme: { current, last } }) => {
-          document.body.classList.remove(`theme-${current}`);
-          document.body.classList.add(`theme-${theme}`);
-
+          handleBodyTheme(current, theme);
           return {
             theme: {
               current: theme as Themes,

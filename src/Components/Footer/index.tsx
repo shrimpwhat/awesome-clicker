@@ -37,7 +37,6 @@ const FooterContent = () => {
     timebarTimeout.current = setTimeout(() => {
       setStatus("default");
       clearProgressBar();
-      if (theme.current === "fire") setTheme(theme.last);
     }, 4000);
   };
 
@@ -48,12 +47,12 @@ const FooterContent = () => {
         clearTimeout(timebarTimeout.current);
       }
 
-      clearTimeout(inactivityTimeout.current);
-      inactivityTimeout.current = setTimeout(() => handleInactivity(), 500);
-
       if (currentCombo >= 100) {
         if (theme.current !== "fire") setTheme("fire");
       }
+
+      clearTimeout(inactivityTimeout.current);
+      inactivityTimeout.current = setTimeout(() => handleInactivity(), 500);
     }
 
     return () => {

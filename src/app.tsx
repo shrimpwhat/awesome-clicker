@@ -8,7 +8,6 @@ export const App = () => {
   return (
     <>
       <FireSpawner />
-
       <header class="header">
         <HeaderTitle />
         <ThemeToggler />
