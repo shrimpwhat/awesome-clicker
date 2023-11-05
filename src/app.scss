@@ -88,7 +88,10 @@ button {
   &__icon {
     $animation-duration: 6s;
 
-    width: 70px;
+    width: 50px;
+    @media (min-width: 700px) {
+      width: 70px;
+    }
     animation: become-visible calc($animation-duration / 2) ease-in-out,
       both slide-up $animation-duration linear,
       side-moves 1s ease-in-out infinite;

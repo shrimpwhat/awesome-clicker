@@ -10,8 +10,8 @@ export default function FireSpawner() {
   const count = useRef<number>(1);
 
   const getRandomPosition = () => {
-    const x = Math.floor(Math.random() * 80 + 10);
-    const y = Math.floor(Math.random() * 50);
+    const x = Math.floor(Math.random() * 60 + 20);
+    const y = Math.floor(Math.random() * 30);
     return [x, y];
   };
 
