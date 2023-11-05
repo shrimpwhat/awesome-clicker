@@ -1,12 +1,17 @@
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  padding: 10px 10px 0 10px;
+  @media (min-width: 1024px) {
+    padding: 20px 20px 0 20px;
+  }
 
   .titleContainer {
     display: flex;
     align-items: center;
-    padding: 10px;
-    margin-left: 70px;
+    @media (min-width: 700px) {
+      margin-left: 70px;
+    }
     width: max-content;
 
     body.theme-fire & {
@@ -19,14 +24,16 @@
   }
 
   &__themeToggleButton {
-    width: max-content;
     justify-self: end;
-    margin: 20px 40px 0 0;
+    align-self: center;
     border: none;
     background-color: var(--themeToggleButton-color);
-    padding-top: 5px;
     border-radius: 10px;
     transition: all 0.3s;
+    box-sizing: border-box;
+    display: flex;
+    place-items: center;
+    padding: 8px;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {

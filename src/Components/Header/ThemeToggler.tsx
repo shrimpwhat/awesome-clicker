@@ -16,7 +16,7 @@ export default function ThemeToggler() {
     <button class="header__themeToggleButton" onClick={toggleTheme}>
       <img
         src={theme.current === "light" ? MoonIcon : SunIcon}
-        class="themeToggler__sunIcon"
+        class="header__themeToggleIcon"
       />
     </button>
   );

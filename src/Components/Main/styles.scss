@@ -1,14 +1,13 @@
 $mount-animation-duration: 2s;
 
-// main {
-//   position: relative;
-//   z-index: 0;
-// }
-
 .clicker {
   body.theme-fire & {
     animation: var(--shake-animation);
   }
+
+  text-align: center;
+  width: max-content;
+  margin: 25vh auto 0 auto;
 
   &__clickBtn {
     @keyframes gradient-animation {
@@ -31,8 +30,13 @@ $mount-animation-duration: 2s;
     font-weight: 500;
     background-size: 300%;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.364);
-    height: 60px;
-    width: 120px;
+    width: 90px;
+    height: 50px;
+    @media (min-width: 700px) {
+      width: 120px;
+      height: 60px;
+    }
+    position: relative;
     font-size: 2rem;
     overflow: hidden;
 
@@ -95,6 +99,8 @@ $mount-animation-duration: 2s;
 
   &__totalClicks {
     margin-bottom: 40px;
+    line-height: 45px;
+
     animation: both mount-animaton $mount-animation-duration 1s;
 
     @keyframes mount-animaton {
@@ -106,7 +112,6 @@ $mount-animation-duration: 2s;
       }
     }
   }
-
   &__clicksValue {
     padding: 0 5px;
     border-radius: 5px;

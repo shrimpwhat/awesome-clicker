@@ -1,5 +1,8 @@
-body {
-  margin: 0;
+:root {
+  font-size: 12px;
+  @media (min-width: 700px) {
+    font-size: 15px;
+  }
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --app-background: linear-gradient(135deg, #a8edea, #fed6e3);
   --app-fontColor: rgb(9, 17, 80);
@@ -10,6 +13,11 @@ body {
   --themeToggleButton-color: white;
   --themeToggleButton-hoverColor: rgb(213, 213, 213);
   --shake-animation: shake 0.2s ease-in infinite;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
 
   &.theme-dark {
     --app-background: linear-gradient(
@@ -64,11 +72,6 @@ button {
   cursor: pointer;
 }
 
-main {
-  margin: 20vh;
-  text-align: center;
-}
-
 @keyframes shake {
   0% {
     translate: none;
@@ -85,12 +88,12 @@ main {
   &__icon {
     $animation-duration: 6s;
 
-    width: 80px;
+    width: 70px;
     animation: become-visible calc($animation-duration / 2) ease-in-out,
       both slide-up $animation-duration linear,
       side-moves 1s ease-in-out infinite;
-    left: 50vw;
     position: absolute;
+    left: 0;
     bottom: 0;
 
     @keyframes become-visible {
