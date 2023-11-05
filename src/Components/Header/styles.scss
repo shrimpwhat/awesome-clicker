@@ -1,8 +1,11 @@
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  box-sizing: border-box;
   padding: 10px 10px 0 10px;
+  min-height: 55px;
   @media (min-width: 1024px) {
+    min-height: 66px;
     padding: 20px 20px 0 20px;
   }
 
