@@ -4,20 +4,22 @@ import FooterContent from "./Components/Footer";
 import { HeaderTitle, ThemeToggler } from "./Components/Header";
 import FireSpawner from "./Components/FireSpawner";
 
-export const App = () => {
+const App = () => {
   return (
     <>
       <FireSpawner />
-      <header class="header">
+      <header className="header">
         <HeaderTitle />
         <ThemeToggler />
       </header>
       <main>
         <Clicker />
       </main>
-      <footer class="footer">
+      <footer className="footer">
         <FooterContent />
       </footer>
     </>
   );
 };
+
+export default App;

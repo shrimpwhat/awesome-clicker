@@ -1,27 +1,27 @@
-import { useEffect, useRef, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "react";
 import useStore from "../../store";
 import "./styles.scss";
 
 const Timebar = () => {
   return (
-    <div class="footer__timebar">
-      <div class="footer__timebarProgressLine"></div>
+    <div className="footer__timebar">
+      <div className="footer__timebarProgressLine"></div>
     </div>
   );
 };
 
 const ProgressBar = ({ currentCombo }: { currentCombo: number }) => {
   return (
-    <div class="progressBarGroup">
-      <div class="progressBarGroup__progressBar">
+    <div className="progressBarGroup">
+      <div className="progressBarGroup__progressBar">
         <div
-          class="progressBarGroup__progressFlap"
+          className="progressBarGroup__progressFlap"
           style={{
             width: `${currentCombo <= 100 ? 100 - currentCombo : 0}%`,
           }}
         ></div>
       </div>
-      <p class="progressBarGroup__progressValue">{currentCombo}</p>
+      <p className="progressBarGroup__progressValue">{currentCombo}</p>
     </div>
   );
 };

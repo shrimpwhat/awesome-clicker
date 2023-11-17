@@ -1,12 +1,11 @@
 import FireIcon from "../assets/fire.svg";
-import { JSX, useEffect, useState, useRef } from "preact/compat";
+import { JSX, useEffect, useState, useRef } from "react";
 import useStore from "../store";
 import { useShallow } from "zustand/react/shallow";
 
-export default function FireSpawner() {
+function FireSpawner() {
   const [icons, setIcons] = useState<JSX.Element[]>([]);
-  const theme = useStore(useShallow((state) => state.theme));
-  const appendInterval = useRef<number>();
+  // const appendInterval = useRef<number>();
   const count = useRef<number>(1);
 
   const getRandomPosition = () => {
@@ -30,23 +29,31 @@ export default function FireSpawner() {
   };
 
   useEffect(() => {
-    if (appendInterval.current === undefined) {
-      appendInterval.current = setInterval(() => {
-        setTimeout(
-          () =>
-            setIcons((prev) => {
-              return [...prev.slice(1)];
-            }),
-          6000
-        );
-        addIcon();
-      }, 500);
-    }
-    return () => clearInterval(appendInterval.current);
+    console.log("mount");
+
+    const interval = setInterval(() => {
+      addIcon();
+      setTimeout(
+        () =>
+          setIcons((prev) => {
+            return [...prev.slice(1)];
+          }),
+        6000
+      );
+    }, 500);
+
+    return () => {
+      console.log("unmount");
+      clearInterval(interval);
+    };
   }, []);
 
+  return <div className="fireSpawner">{icons}</div>;
+}
+
+export default function Wrapper() {
+  const theme = useStore(useShallow((state) => state.theme));
   if (theme.current === "fire") {
-    return <div class="fireSpawner">{icons}</div>;
+    return <FireSpawner />;
   }
-  return <></>;
 }

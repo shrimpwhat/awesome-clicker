@@ -13,10 +13,10 @@ export default function ThemeToggler() {
   };
 
   return (
-    <button class="header__themeToggleButton" onClick={toggleTheme}>
+    <button className="header__themeToggleButton" onClick={toggleTheme}>
       <img
         src={theme.current === "light" ? MoonIcon : SunIcon}
-        class="header__themeToggleIcon"
+        className="header__themeToggleIcon"
       />
     </button>
   );
