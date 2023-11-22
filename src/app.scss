@@ -3,10 +3,9 @@
   @media (min-width: 700px) {
     font-size: 15px;
   }
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, sans-serif;
   --app-background: linear-gradient(135deg, #a8edea, #fed6e3);
   --app-fontColor: rgb(9, 17, 80);
-  --footer-background: rgba(0, 0, 0, 0.04);
   --clickButton-gradient: linear-gradient(45deg, #fc466b, #3f5efb);
   --clickButton-shadowColor: #a9b0c9;
   --timebar-color: grey;
@@ -22,11 +21,10 @@ body {
   &.theme-dark {
     --app-background: linear-gradient(
       135deg,
-      rgba(30, 2, 83, 1) 44.2%,
-      rgb(91, 0, 103)
+      rgb(21, 0, 60) 44.2%,
+      rgb(0, 42, 139)
     );
     --app-fontColor: white;
-    --footer-background: rgba(0, 0, 0, 0.255);
     --clickButton-gradient: linear-gradient(45deg, #4776e6, #8e54e9);
     --timebar-color: white;
     --themeToggleButton-color: black;
@@ -48,23 +46,29 @@ body {
 #app {
   min-height: 100vh;
   color: var(--app-fontColor);
-  background: white;
-  background-image: var(--app-background);
-  background-size: 400%;
-  animation: bg-animation 25s infinite;
+  background: var(--app-background);
+  background-size: 400% 400%;
+  animation: bg-animation 25s infinite ease;
   position: relative;
 
   @keyframes bg-animation {
-    from {
-      background-position: left;
+    0% {
+      background-position: 0% 50%;
     }
     50% {
-      background-position: right;
+      background-position: 100% 50%;
     }
-    to {
-      background-position: left;
+    100% {
+      background-position: 0% 50%;
     }
   }
+}
+
+header,
+main,
+footer {
+  z-index: 1;
+  position: relative;
 }
 
 button {
