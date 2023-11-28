@@ -3,13 +3,13 @@ import Clicker from "./Components/Main";
 import FooterContent from "./Components/Footer";
 import { HeaderTitle, ThemeToggler } from "./Components/Header";
 import FireSpawner from "./Components/FireSpawner";
-import Particles3D from "./Components/Particles3D.jsx";
+import ParticlesCanvas from "./Components/ParticlesCanvas.js";
 
 const App = () => {
   return (
     <>
-      <Particles3D />
-      {/* <FireSpawner />
+      <ParticlesCanvas />
+      <FireSpawner />
       <header className="header">
         <HeaderTitle />
         <ThemeToggler />
@@ -19,7 +19,7 @@ const App = () => {
       </main>
       <footer className="footer">
         <FooterContent />
-      </footer> */}
+      </footer>
     </>
   );
 };

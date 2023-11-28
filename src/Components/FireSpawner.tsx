@@ -5,7 +5,6 @@ import { useShallow } from "zustand/react/shallow";
 
 function FireSpawner() {
   const [icons, setIcons] = useState<JSX.Element[]>([]);
-  // const appendInterval = useRef<number>();
   const count = useRef<number>(1);
 
   const getRandomPosition = () => {
@@ -29,22 +28,22 @@ function FireSpawner() {
   };
 
   useEffect(() => {
-    console.log("mount");
-
+    const timeouts: number[] = [];
     const interval = setInterval(() => {
       addIcon();
-      setTimeout(
+      const timeout = setTimeout(
         () =>
           setIcons((prev) => {
             return [...prev.slice(1)];
           }),
         6000
       );
+      timeouts.push(timeout);
     }, 500);
 
     return () => {
-      console.log("unmount");
       clearInterval(interval);
+      timeouts.forEach((timeout) => clearTimeout(timeout));
     };
   }, []);
 
