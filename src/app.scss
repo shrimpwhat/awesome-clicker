@@ -1,7 +1,9 @@
+@import "breakpoints";
+
 :root {
-  font-size: 12px;
-  @media (min-width: 700px) {
-    font-size: 15px;
+  font-size: 17px;
+  @media (min-width: $breakpoint-lg) {
+    font-size: 20px;
   }
   font-family: system-ui, sans-serif;
   --app-background: linear-gradient(135deg, #a8edea, #fed6e3);
@@ -11,7 +13,8 @@
   --timebar-color: grey;
   --themeToggleButton-color: white;
   --themeToggleButton-hoverColor: rgb(213, 213, 213);
-  --shake-animation: shake 0.2s ease-in infinite;
+  --shake-animation: none;
+  --text-shadow: 0 0 3px white;
 }
 
 body {
@@ -40,6 +43,7 @@ body {
     --app-fontColor: black;
     --clickButton-gradient: linear-gradient(45deg, #fc8072, rgb(255, 67, 67));
     --timebar-color: black;
+    --shake-animation: shake 0.2s ease-in infinite;
   }
 }
 
@@ -93,7 +97,7 @@ button {
     $animation-duration: 6s;
 
     width: 50px;
-    @media (min-width: 700px) {
+    @media (min-width: $breakpoint-lg) {
       width: 70px;
     }
     animation: become-visible calc($animation-duration / 2) ease-in-out,

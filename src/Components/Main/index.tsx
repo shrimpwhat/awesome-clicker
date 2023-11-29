@@ -30,7 +30,7 @@ export const Clicker = () => {
   return (
     <div className="clicker">
       <h1 className="clicker__totalClicks">
-        Total clicks:
+        <span className="clicker__title">Total clicks:</span>
         <br />
         <span style={getRandomColor()} className="clicker__clicksValue">
           {clicks}

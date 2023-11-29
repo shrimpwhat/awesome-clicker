@@ -1,3 +1,5 @@
+@import "../../breakpoints";
+
 .footer {
   position: fixed;
   bottom: 0;
@@ -17,20 +19,18 @@
     gap: 15px;
     align-items: center;
 
-    @media (min-width: 1024px) {
+    @media (min-width: $breakpoint-md) {
       margin-left: 50px;
     }
 
-    body.theme-fire & {
-      animation: var(--shake-animation);
-    }
+    animation: var(--shake-animation);
 
     &__progressBar {
       border: 1px solid black;
       border-radius: 20px;
       width: 170px;
       height: 20px;
-      @media (min-width: 700px) {
+      @media (min-width: $breakpoint-sm) {
         width: 300px;
         height: 40px;
         padding: 8px;
@@ -77,7 +77,7 @@
   &__timebar {
     height: 10px;
     width: 100px;
-    @media (min-width: 430px) {
+    @media (min-width: $breakpoint-sm) {
       width: 150px;
     }
 

@@ -1,10 +1,12 @@
+@import "../../breakpoints";
+
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   box-sizing: border-box;
   padding: 10px 10px 0 10px;
   min-height: 55px;
-  @media (min-width: 1024px) {
+  @media (min-width: $breakpoint-sm) {
     min-height: 66px;
     padding: 20px 20px 0 20px;
   }
@@ -12,17 +14,21 @@
   .titleContainer {
     display: flex;
     align-items: center;
-    @media (min-width: 700px) {
+    @media (min-width: $breakpoint-md) {
       margin-left: 70px;
     }
     width: max-content;
 
-    body.theme-fire & {
-      animation: var(--shake-animation);
-    }
+    animation: var(--shake-animation);
 
     &__title {
+      font-size: 1.5rem;
+      @media (min-width: $breakpoint-sm) {
+        font-size: 2rem;
+      }
+
       margin: 0;
+      text-shadow: var(--text-shadow);
     }
   }
 
