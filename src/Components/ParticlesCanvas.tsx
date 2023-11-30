@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import { useShallow } from "zustand/react/shallow";
 import useStore from "../store";
 
@@ -19,8 +18,8 @@ type ExplosionProps = {
 };
 
 const colors = {
-  light: ["#f7bd45", "#F02D3A", "#63C132", "#B118C8"],
-  dark: ["#9BF3F0", "#A790A5", "#33A1FD", "#8CDEDC"],
+  light: ["#ff7105", "#F02D3A", "#63C132", "#B118C8"],
+  dark: ["#9BF3F0", "#33A1FD", "#8CDEDC", "#BF0603"],
   fire: [],
 };
 
@@ -89,19 +88,21 @@ const ParticlesCanvas = () => {
   const counter = useRef(0);
 
   const randColor = () => {
-    const randomIndex = Math.floor(Math.random() * colors.light.length);
+    const randomIndex = Math.floor(
+      Math.random() * colors[theme.current].length
+    );
     return new THREE.Color(colors[theme.current][randomIndex]);
   };
 
   const getNewExplosion = (): ExplosionProps => ({
     id: counter.current++,
-    moveSpeed: randFloat(0.3, 0.6),
+    moveSpeed: randFloat(0.5, 0.8),
     pos: new THREE.Vector3(
       randFloat(-10, 0),
       randFloat(-8, 8),
       randFloat(-5, 5)
     ),
-    radius: randFloat(0.3, 1),
+    radius: randFloat(0.3, 0.7),
     rotationMultiplier: randFloat(0.5, 2),
     count: randFloat(20, 40),
     color: randColor(),
@@ -121,16 +122,13 @@ const ParticlesCanvas = () => {
   return (
     <Canvas
       style={{ position: "absolute", inset: "0" }}
-      camera={{ fov: 90, position: [10, 0, 0], near: 0.1, far: 100 }}
+      camera={{ fov: 90, position: [10, 0, 0], near: 0.1, far: 70 }}
     >
       <ambientLight intensity={0.2} />
-      <directionalLight position={[10, 10, 0]} intensity={10} />
+      <directionalLight position={[20, 0, 0]} intensity={5} />
       {effects.map((props) => (
         <Explosion key={props.id} {...props} />
       ))}
-      <EffectComposer>
-        <Bloom intensity={0.15} luminanceThreshold={0} mipmapBlur />
-      </EffectComposer>
     </Canvas>
   );
 };
