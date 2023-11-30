@@ -18,11 +18,11 @@ type ExplosionProps = {
   dummy?: THREE.Object3D;
 };
 
-const colors = ["#f7bd45", "#F02D3A", "#63C132", "#B118C8"].map(
-  (color) => new THREE.Color(color)
-);
-
-const randColor = () => colors[Math.floor(Math.random() * colors.length)];
+const colors = {
+  light: ["#f7bd45", "#F02D3A", "#63C132", "#B118C8"],
+  dark: ["#9BF3F0", "#A790A5", "#33A1FD", "#8CDEDC"],
+  fire: [],
+};
 
 const Explosion = ({
   pos,
@@ -81,10 +81,17 @@ const Explosion = ({
 };
 
 const ParticlesCanvas = () => {
-  const clicks = useStore(useShallow((state) => state.clicks));
+  const { clicks, theme } = useStore(
+    useShallow((state) => ({ clicks: state.clicks, theme: state.theme }))
+  );
   const [effects, setEffects] = useState<ExplosionProps[]>([]);
   const [isFirstRender, setIsFirstRender] = useState(true);
   const counter = useRef(0);
+
+  const randColor = () => {
+    const randomIndex = Math.floor(Math.random() * colors.light.length);
+    return new THREE.Color(colors[theme.current][randomIndex]);
+  };
 
   const getNewExplosion = (): ExplosionProps => ({
     id: counter.current++,
@@ -102,10 +109,12 @@ const ParticlesCanvas = () => {
 
   useEffect(() => {
     if (!isFirstRender) {
-      setEffects((prev) => prev.concat([getNewExplosion()]));
-      setTimeout(() => {
-        setEffects((prev) => prev.slice(1));
-      }, 2000);
+      if (theme.current !== "fire") {
+        setEffects((prev) => prev.concat([getNewExplosion()]));
+        setTimeout(() => {
+          setEffects((prev) => prev.slice(1));
+        }, 2000);
+      }
     } else setIsFirstRender(false);
   }, [clicks]);
 
@@ -114,8 +123,6 @@ const ParticlesCanvas = () => {
       style={{ position: "absolute", inset: "0" }}
       camera={{ fov: 90, position: [10, 0, 0], near: 0.1, far: 100 }}
     >
-      {/* <CameraControls /> */}
-      {/* <axesHelper args={[1000]} /> */}
       <ambientLight intensity={0.2} />
       <directionalLight position={[10, 10, 0]} intensity={10} />
       {effects.map((props) => (

@@ -6,6 +6,9 @@ import { useShallow } from "zustand/react/shallow";
 function FireSpawner() {
   const [icons, setIcons] = useState<JSX.Element[]>([]);
   const count = useRef<number>(1);
+  const { theme, clicks } = useStore(
+    useShallow((state) => ({ theme: state.theme, clicks: state.clicks }))
+  );
 
   const getRandomPosition = () => {
     const x = Math.floor(Math.random() * 60 + 20);
@@ -25,34 +28,20 @@ function FireSpawner() {
         style={{ left: `${x}%`, bottom: `${y}%` }}
       />,
     ]);
+    setTimeout(
+      () =>
+        setIcons((prev) => {
+          return [...prev.slice(1)];
+        }),
+      6000
+    );
   };
 
   useEffect(() => {
-    const timeouts: number[] = [];
-    const interval = setInterval(() => {
-      addIcon();
-      const timeout = setTimeout(
-        () =>
-          setIcons((prev) => {
-            return [...prev.slice(1)];
-          }),
-        6000
-      );
-      timeouts.push(timeout);
-    }, 500);
-
-    return () => {
-      clearInterval(interval);
-      timeouts.forEach((timeout) => clearTimeout(timeout));
-    };
-  }, []);
+    if (theme.current === "fire") addIcon();
+  }, [clicks]);
 
   return <div className="fireSpawner">{icons}</div>;
 }
 
-export default function Wrapper() {
-  const theme = useStore(useShallow((state) => state.theme));
-  if (theme.current === "fire") {
-    return <FireSpawner />;
-  }
-}
+export default FireSpawner;

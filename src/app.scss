@@ -32,6 +32,7 @@ body {
     --timebar-color: white;
     --themeToggleButton-color: black;
     --themeToggleButton-hoverColor: rgb(33, 33, 33);
+    --text-shadow: 0 0 3px black;
   }
 
   &.theme-fire {
@@ -44,6 +45,7 @@ body {
     --clickButton-gradient: linear-gradient(45deg, #fc8072, rgb(255, 67, 67));
     --timebar-color: black;
     --shake-animation: shake 0.2s ease-in infinite;
+    --text-shadow: 0 0 3px white;
   }
 }
 
