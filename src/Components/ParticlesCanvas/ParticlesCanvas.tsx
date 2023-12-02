@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { useRef, useMemo, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useShallow } from "zustand/react/shallow";
-import useStore from "../store";
+import useStore from "../../store";
 
 const { randFloat } = THREE.MathUtils;
 

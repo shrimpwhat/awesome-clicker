@@ -28,8 +28,8 @@ const ProgressBar = ({ currentCombo }: { currentCombo: number }) => {
 
 const FooterContent = () => {
   const { currentCombo, clearProgressBar, theme, setTheme } = useStore();
-  const inactivityTimeout = useRef<number | undefined>(undefined);
-  const timebarTimeout = useRef<number | undefined>(undefined);
+  const inactivityTimeout = useRef<NodeJS.Timeout>();
+  const timebarTimeout = useRef<NodeJS.Timeout>();
   const [status, setStatus] = useState<"default" | "timebar">("default");
 
   const handleInactivity = () => {
@@ -45,10 +45,6 @@ const FooterContent = () => {
       if (status === "timebar") {
         setStatus("default");
         clearTimeout(timebarTimeout.current);
-      }
-
-      if (currentCombo >= 100) {
-        if (theme.current !== "fire") setTheme("fire");
       }
 
       clearTimeout(inactivityTimeout.current);

@@ -1,6 +1,6 @@
-import FireIcon from "../assets/fire.svg";
+import FireIcon from "../../assets/fire.svg";
 import { JSX, useEffect, useState, useRef } from "react";
-import useStore from "../store";
+import useStore from "../../store";
 import { useShallow } from "zustand/react/shallow";
 
 function FireSpawner() {

@@ -44,7 +44,7 @@ const handleBodyTheme = (
 
 const useStore = create<State & Actions>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       clicks: 0,
       currentCombo: 0,
       theme: {
@@ -58,10 +58,17 @@ const useStore = create<State & Actions>()(
       },
 
       handleClick: () =>
-        set((state) => ({
-          clicks: state.clicks + 1,
-          currentCombo: state.currentCombo + 1,
-        })),
+        set((state) => {
+          const newState = {
+            clicks: state.clicks + 1,
+            currentCombo: state.currentCombo + 1,
+          };
+
+          if (newState.currentCombo >= 100 && state.theme.current !== "fire")
+            get().setTheme("fire");
+
+          return newState;
+        }),
 
       clearProgressBar: () => {
         set((state) => {
