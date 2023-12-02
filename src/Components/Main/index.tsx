@@ -1,4 +1,4 @@
-import "./styles.scss";
+import "./Main.scss";
 import useStore from "../../store";
 import { useShallow } from "zustand/react/shallow";
 
@@ -10,19 +10,18 @@ export const Clicker = () => {
     }))
   );
 
-  const getRandomColor = (): { color: string; backgroundColor: string } => {
+  const getRandomColor = () => {
     const red = Math.random() * 255;
     const green = Math.random() * 255;
     const blue = Math.random() * 255;
 
-    let bgColor;
+    let bgColor = "white";
     if (red * 0.299 + green * 0.587 + blue * 0.114 > 186) {
       bgColor = "black";
-    } else {
-      bgColor = "white";
     }
+    const color = `rgb(${red}, ${green}, ${blue})`;
     return {
-      color: `rgb(${red}, ${green}, ${blue})`,
+      color,
       backgroundColor: bgColor,
     };
   };

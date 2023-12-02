@@ -1,5 +1,4 @@
 import StarIcon from "../../assets/star.svg";
-import "./styles.scss";
 
 export default function HeaderTitle() {
   return (

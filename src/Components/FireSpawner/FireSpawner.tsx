@@ -2,6 +2,7 @@ import FireIcon from "../../assets/fire.svg";
 import { JSX, useEffect, useState, useRef } from "react";
 import useStore from "../../store";
 import { useShallow } from "zustand/react/shallow";
+import "./FireSpawner.scss";
 
 function FireSpawner() {
   const [icons, setIcons] = useState<JSX.Element[]>([]);

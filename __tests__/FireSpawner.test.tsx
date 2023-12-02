@@ -1,6 +1,6 @@
 import { act, render, screen } from "@testing-library/react";
-import FireSpawner from "./FireSpawner";
-import useStore from "../../store";
+import FireSpawner from "../src/Components/FireSpawner/FireSpawner";
+import useStore from "../src/store";
 
 describe("Fire icons spawner", () => {
   beforeEach(() => {

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useStore from "../../store";
-import "./styles.scss";
+import "./Footer.scss";
 
 const Timebar = () => {
   return (

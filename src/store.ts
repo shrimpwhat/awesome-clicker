@@ -35,11 +35,11 @@ const getDefaultTheme = () => {
 };
 
 const handleBodyTheme = (
-  last: Themes | Omit<Themes, "fire">,
-  current: Themes | Omit<Themes, "fire">
+  old: Themes | Omit<Themes, "fire">,
+  next: Themes | Omit<Themes, "fire">
 ) => {
-  document.body.classList.remove(`theme-${last}`);
-  document.body.classList.add(`theme-${current}`);
+  document.body.classList.remove(`theme-${old}`);
+  document.body.classList.add(`theme-${next}`);
 };
 
 const useStore = create<State & Actions>()(
