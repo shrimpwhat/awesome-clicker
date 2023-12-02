@@ -1,5 +1,5 @@
 import * as zustand from "zustand";
-import { act, cleanup } from "@testing-library/react";
+import { act } from "@testing-library/react";
 
 const { create: actualCreate } = await vi.importActual<typeof zustand>(
   "zustand"
@@ -32,5 +32,4 @@ afterEach(() => {
       resetFn();
     });
   });
-  cleanup();
 });
