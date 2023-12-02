@@ -1,5 +1,10 @@
 # Awesome Clicker
 
+![preview](https://github.com/shrimpwhat/awesome-clicker/assets/49585211/6a2d9744-b522-45a0-8983-f7cb68706ec5)
+
+
+
+
 _This app is built using [zustand](https://github.com/pmndrs/zustand) state manager_
 
 I've decided to implement as many pretty features as possible that the user will be able to see on the screen depending on their actions. So I worked on many UX things including JS and CSS animations, gradients, 3D particles and more.
