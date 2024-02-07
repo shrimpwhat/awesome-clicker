@@ -17,7 +17,5 @@
 - [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) (React рендерер для three.js)
 
 ## Запуск
-```
-npm install
-npm run dev
-```
+1. `npm install`
+2. `npm run dev`
