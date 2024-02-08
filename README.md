@@ -13,7 +13,7 @@
 - React
 - Vite
 - [Zustand](https://github.com/pmndrs/zustand) (state-manager)
-- SCSS
+- SASS
 - [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/getting-started/introduction) (React рендерер для three.js)
 
 ## Запуск
